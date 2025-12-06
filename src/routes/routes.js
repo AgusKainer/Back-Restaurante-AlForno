@@ -23,11 +23,11 @@ const isAdmin = require("../middleware/isAdmin");
 
 const router = Router();
 
-router.get('/favicon.ico', (req, res) => res.status(204).end());
 // Ruta base para probar que funciona
 router.get('/', (req, res) => {
   res.send('API funcionando correctamente 🚀');
 });
+router.get('/favicon.ico', (req, res) => res.status(204).end());
 
 // Ejemplo de otra ruta
 router.get('/status', (req, res) => {
