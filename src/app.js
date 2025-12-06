@@ -5,16 +5,15 @@ const router = require("./routes/routes");
 const app = express();
 
 app.use(express.json());
-app.use(
-  cors()
-);
+app.use(cors());
 app.use(morgan("dev"));
 // Manejo del favicon directamente en app
-app.get('/favicon.ico', (req, res) => res.status(204).end());
+app.use("/favicon.ico", (req, res) => {
+  res.sendFile(path.join(__dirname, "favicon.ico"));
+});
 
 // Montar el router
-app.use('/', router);
-
+app.use("/", router);
 
 module.exports = app;
 
