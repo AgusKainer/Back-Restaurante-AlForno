@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://front-restaurante-alforno-production.up.railway.app/",
+    origin: "https://front-restaurante-alforno-production.up.railway.app", // sin la barra
     credentials: true,
   })
 );
