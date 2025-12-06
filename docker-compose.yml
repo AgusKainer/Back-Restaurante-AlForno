@@ -1,8 +1,0 @@
-services:
-  backend:
-    build:
-      context: .
-    ports:
-      - "1000:1000"
-    volumes:
-      - ./back:/home/app
