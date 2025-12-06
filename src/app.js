@@ -5,7 +5,12 @@ const router = require("./routes/routes");
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://front-restaurante-alforno-production.up.railway.app/",
+    credentials: true,
+  })
+);
 app.use(morgan("dev"));
 // Manejo del favicon directamente en app
 app.use("/favicon.ico", (req, res) => {
@@ -16,8 +21,3 @@ app.use("/favicon.ico", (req, res) => {
 app.use("/", router);
 
 module.exports = app;
-
-// {
-//     origin: "http://localhost:5173",
-//     credentials: true,
-//   }
