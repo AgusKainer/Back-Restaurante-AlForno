@@ -23,6 +23,17 @@ const isAdmin = require("../middleware/isAdmin");
 
 const router = Router();
 
+router.get('/favicon.ico', (req, res) => res.status(204).end());
+// Ruta base para probar que funciona
+router.get('/', (req, res) => {
+  res.send('API funcionando correctamente 🚀');
+});
+
+// Ejemplo de otra ruta
+router.get('/status', (req, res) => {
+  res.json({ ok: true, message: 'Backend activo en Railway' });
+});
+
 router.get("/mesa", getMesaController);
 router.get("/mesaDisponible", getMesasDisponiblesController);
 router.get("/reserva", isAdmin("admin"), getReservaController);
