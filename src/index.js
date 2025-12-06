@@ -1,4 +1,5 @@
 const app = require("./app");
+const path = require("path");
 require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 const db = require("./db/DB");
 
