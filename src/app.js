@@ -12,7 +12,11 @@ app.use(
   })
 );
 app.use(morgan("dev"));
+// Manejo del favicon directamente en app
 app.get('/favicon.ico', (req, res) => res.status(204).end());
-app.use(router);
+
+// Montar el router
+app.use('/', router);
+
 
 module.exports = app;
