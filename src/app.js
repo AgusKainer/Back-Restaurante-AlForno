@@ -6,10 +6,7 @@ const app = express();
 
 app.use(express.json());
 app.use(
-  // cors({
-  //   origin: "http://localhost:5173",
-  //   credentials: true,
-  // })
+  cors()
 );
 app.use(morgan("dev"));
 // Manejo del favicon directamente en app
@@ -20,3 +17,8 @@ app.use('/', router);
 
 
 module.exports = app;
+
+// {
+//     origin: "http://localhost:5173",
+//     credentials: true,
+//   }
