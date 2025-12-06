@@ -1,15 +1,16 @@
 const app = require("./app");
-const { PORT } = require("./utils/config");
+require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 const db = require("./db/DB");
 
+const PORT = process.env.PORT || 3000;
 const server = async () => {
   try {
     console.log("puerto: ", PORT);
 
     await db.sync();
     console.log("db conectada");
-    app.listen(PORT, () => {
-      console.log("SERVER LAVANTADO EN PUERTO: ", PORT);
+    app.listen(PORT, "0.0.0.0", () => {
+      console.log("SERVER LEVANTADO EN PUERTO:", PORT);
     });
   } catch (error) {
     console.log("ERROR AL LAVANTAR EL SERVIDOR", error);
