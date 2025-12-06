@@ -12,6 +12,7 @@ app.use(
   })
 );
 app.use(morgan("dev"));
+app.get('/favicon.ico', (req, res) => res.status(204).end());
 app.use(router);
 
 module.exports = app;
