@@ -1,19 +1,19 @@
 const nodemailer = require("nodemailer");
-const { EMAIL, PASS_APP } = require("../../../utils/config");
+
 console.log("email: ", EMAIL);
 console.log("pass: ", PASS_APP);
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: EMAIL,
-    pass: PASS_APP,
+    user: process.env.EMAIL,
+    pass: process.env.PASS_APP,
   },
 });
 
 const email = async ({ to, text }) => {
   return await transporter.sendMail({
-    from: EMAIL,
+    from: process.env.EMAIL,
     to,
     subject: "Reserva de turno del restaurante",
     text,
