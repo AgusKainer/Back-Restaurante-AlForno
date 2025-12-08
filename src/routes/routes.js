@@ -20,6 +20,8 @@ const {
 } = require("../controller/index.controller");
 
 const isAdmin = require("../middleware/isAdmin");
+const { Admin } = require("../models/index.model");
+const { verifyToken } = require("../utils/token");
 
 const router = Router();
 
