@@ -23,15 +23,31 @@ const isAdmin = require("../middleware/isAdmin");
 
 const router = Router();
 
-// Ruta base para probar que funciona
-router.get('/', (req, res) => {
-  res.send('API funcionando correctamente 🚀');
+router.get("/verify", async (req, res) => {
+  try {
+    const token = req.headers.authorization?.split(" ")[1];
+    if (!token) return res.status(401).json({ message: "Token vacío" });
+
+    const decoded = verifyToken(token);
+    const user = await Admin.findByPk(decoded.id);
+    if (!user)
+      return res.status(404).json({ message: "Usuario no encontrado" });
+
+    res.json({ valid: true, user });
+  } catch (error) {
+    res.status(401).json({ valid: false, message: "Token inválido" });
+  }
 });
-router.get('/favicon.ico', (req, res) => res.status(204).end());
+
+// Ruta base para probar que funciona
+router.get("/", (req, res) => {
+  res.send("API funcionando correctamente 🚀");
+});
+router.get("/favicon.ico", (req, res) => res.status(204).end());
 
 // Ejemplo de otra ruta
-router.get('/status', (req, res) => {
-  res.json({ ok: true, message: 'Backend activo en Railway' });
+router.get("/status", (req, res) => {
+  res.json({ ok: true, message: "Backend activo en Railway" });
 });
 
 router.get("/mesa", getMesaController);
