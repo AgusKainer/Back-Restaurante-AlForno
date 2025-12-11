@@ -16,10 +16,7 @@ const postReservaController = async (req, res) => {
     });
 
     res.status(200).json(reserva);
-    console.log("reserva desde el back: ", reserva);
   } catch (error) {
-    console.log("error desde el back: ", error);
-
     res
       .status(500)
       .json({ message: `ERROR EN EL SERVIDOR, REVISAR CONTROLLER: ${error}` });

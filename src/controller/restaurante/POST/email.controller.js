@@ -22,14 +22,12 @@ const sendMailController = async (req, res) => {
     🗺️ Ubicaicon: ${ubicacion}.
     🪑 Mesa: ${mesasReservas}
 
-    Este correo es automatico, no debe de responder, cualquier inquietud enviar mensaje a nuestro numero: 989459
+    Este correo es automatico, no debe de responder, cualquier inquietud enviar mensaje a nuestro numero: 3756458989
     `;
 
     await email({ to: nombre, text: texto });
     res.status(200).json({ message: "Correo enviado" });
   } catch (error) {
-    console.log(`CORREO NO ENVIADO CONTROLLER: ${error}`);
-
     res.status(500).json({ message: "ERROR EN EL SERVIDOR: ", error });
   }
 };

@@ -18,7 +18,6 @@ const getMesasDisponiblesController = async (req, res) => {
 
     res.status(200).json(disponibles);
   } catch (error) {
-    console.error("Error al buscar mesas disponibles:", error);
     res.status(500).json({ message: "Error interno del servidor" });
   }
 };

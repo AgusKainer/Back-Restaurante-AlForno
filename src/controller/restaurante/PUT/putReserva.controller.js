@@ -15,7 +15,6 @@ const putReservaController = async (req, res) => {
       ? res.status(404).json({ message: "No se puede actualizar" })
       : res.status(200).json(reserva);
   } catch (error) {
-    console.log(`ÈRROR CONTROLELR: ${error}`);
     res.status(500).json({ message: "ERROR EN EL SERVIDOR" });
   }
 };
