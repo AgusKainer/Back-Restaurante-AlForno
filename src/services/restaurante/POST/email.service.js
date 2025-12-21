@@ -9,7 +9,8 @@ const transporter = nodemailer.createTransport({
     pass: process.env.API_EMAIL,
   },
 });
-
+console.log("Auth user:", process.env.EMAIL);
+console.log("Auth pass (API key):", process.env.API_EMAIL ? "OK" : "MISSING");
 const email = async ({ to, text }) => {
   console.log("intentando enviar ", to);
   console.log("contenido: ", text);
