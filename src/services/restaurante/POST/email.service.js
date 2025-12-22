@@ -51,7 +51,8 @@ const email = async ({ to, text }) => {
       subject: "Reserva de turno del restaurante",
       textContent: text,
     };
-
+    console.log("API_EMAIL:", process.env.API_EMAIL ? "OK" : "MISSING");
+    console.log("EMAIL:", process.env.EMAIL);
     const result = await client.sendTransacEmail(sendSmtpEmail);
     console.log("Correo enviado:", result);
     return result;
